@@ -1,0 +1,12 @@
+# example of log loss
+from numpy import asarray
+from sklearn.metrics import log_loss
+# define data
+y_true = [1, 1, 1, 1, 1, 0, 0, 0, 0, 0]
+y_pred = [0.8, 0.9, 0.9, 0.6, 0.8, 0.1, 0.4, 0.2, 0.1, 0.3]
+# define data as expected, e.g. probability for each event {0, 1}
+y_true = asarray([[v, 1-v] for v in y_true])
+y_pred = asarray([[v, 1-v] for v in y_pred])
+# calculate log loss
+loss = log_loss(y_true, y_pred)
+print(loss)
